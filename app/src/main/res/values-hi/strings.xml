@@ -3,4 +3,8 @@
     <string name="app_name">astha\'s android labs</string>
     <string name="hello_message">namaste_sandesh</string>
     <string name="button_message">Mai ek button hu</string>
+    <string name="spin_message">Ghumao</string>
+    <string name="button1">Pehla</string>
+    <string name="button2">Doosra</string>
+    <string name="button3">Teesra</string>
 </resources>
