@@ -1,9 +1,12 @@
-package algonquin.cst2335.jais0017;
+package algonquin.cst2335.pund0006;
+
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import java.util.ArrayList;
+
 import algonquin.cst2335.pund0006.ChatMessage;
+
 
 /** ViewModel to hold the list of chat messages */
 public class ChatRoomViewModel extends ViewModel {
