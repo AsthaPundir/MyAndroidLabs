@@ -1,5 +1,19 @@
 <resources>
-    <string name="app_name">astha\'s android labs</string>
-    <string name="hello_message">Hello world!</string>
-    <string name="button_message">I\'m a button</string>
+    <string name="app_name">AsthasAndroid Labs</string>
+    <string name="hello_message">Type your password:</string>
+    <string name="button_message">LOGIN</string>
+    <string name="button" translatable="false">LOGIN</string>
+    <string name="typepassword" translatable="false">Type your password:</string>
+    <string name="password_meets_requirements" translatable="false">Your password meets the requirements</string>
+    <string name="password_does_not_meet_requirements" translatable="false">You shall not pass!</string>
+    <string name="password_missing_uppercase" translatable="false">The password is missing an uppercase letter.</string>
+    <string name="password_missing_lowercase" translatable="false">The password is missing a lowercase letter.</string>
+    <string name="password_missing_number" translatable="false">The password is missing a number.</string>
+    <string name="password_missing_special_char" translatable="false">The password is missing a special character</string>
+
+    <string name="message" translatable="false">Message goes here</string>
+    <string name="time" translatable="false">Time goes here</string>
+    <string name="SEND" translatable="false">SEND</string>
+    <string name="RECEIVE" translatable="false">RECEIVE</string>
+
 </resources>
