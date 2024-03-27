@@ -1,11 +1,17 @@
 package algonquin.cst2335.pund0006;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,8 +25,10 @@ import java.util.Date;
 
 public class ChatRoom extends AppCompatActivity {
     private ActivityChatRoomBinding binding;
-    private algonquin.cst2335.jais0017.ChatRoomViewModel chatModel;
+    private algonquin.cst2335.pund0006.ChatRoomViewModel chatModel;
     private MyAdapter myAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +36,10 @@ public class ChatRoom extends AppCompatActivity {
         binding = ActivityChatRoomBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        chatModel = new ViewModelProvider(this).get(algonquin.cst2335.jais0017.ChatRoomViewModel.class);
+        setSupportActionBar(binding.myToolbar);
+
+
+        chatModel = new ViewModelProvider(this).get(algonquin.cst2335.pund0006.ChatRoomViewModel.class);
 
         ArrayList<ChatMessage> messages = chatModel.getMessages().getValue();
         if (messages == null) {
@@ -68,6 +79,45 @@ public class ChatRoom extends AppCompatActivity {
     private String getCurrentTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         return sdf.format(new Date());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu resource file
+        getMenuInflater().inflate(R.menu.my_menu, menu);
+
+        // Return true to indicate that the menu has been successfully inflated
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item)
+    {
+
+        if (item.getItemId() == R.id.item1) {
+            // Show an alert dialog asking for confirmation before deleting all messages
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Delete Messages");
+            builder.setMessage("Are you sure you want to delete all messages?");
+            builder.setPositiveButton("Yes", (dialog, which) -> {
+                // Delete all messages
+                chatModel.clearMessages();
+                Toast.makeText(this, "All messages deleted", Toast.LENGTH_SHORT).show();
+            });
+            builder.setNegativeButton("No", (dialog, which) -> {
+                // Do nothing
+            });
+            builder.show();
+            Log.d("MenuClick", "Delete Messages item clicked");
+            return true;
+        } else if (item.getItemId() == R.id.about) {
+            // Display toast with version information
+            Toast.makeText(this, "Version 1.0, created by Astha Pundir", Toast.LENGTH_SHORT).show();
+            Log.d("MenuClick", "About item clicked");
+            return true;
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
     }
 
     class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

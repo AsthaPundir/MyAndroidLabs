@@ -1,4 +1,4 @@
-package algonquin.cst2335.jais0017;
+package algonquin.cst2335.pund0006;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -23,6 +23,10 @@ public class ChatRoomViewModel extends ViewModel {
         }
         currentMessages.add(message);
         messages.setValue(currentMessages);
+    }
+
+    public void clearMessages() {
+        messages.setValue(new ArrayList<>());
     }
 
 }
